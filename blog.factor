@@ -5,7 +5,7 @@ IN: blog
 
 TUPLE: post id title content created-at ;
 
-post "posts" {
+\ post "posts" {
     { "id" "id" INTEGER +db-assigned-id+ }
     { "title" "title" { VARCHAR 100 } +not-null+ }
     { "content" "content" TEXT +not-null+ }
@@ -13,4 +13,7 @@ post "posts" {
 } define-persistent
 
 : <post> ( id -- post )
-    post new swap >>id ;
+    \ post new swap >>id ;
+
+: post ( id -- post )
+    <post> select-tuple ;
