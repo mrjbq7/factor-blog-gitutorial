@@ -1,7 +1,9 @@
 ! Copyright (C) 2010 Maximilian Lupke.
 ! See http://factorcode.org/license.txt for BSD license.
-USING: accessors db.tuples db.types kernel ;
+USING: accessors db.tuples db.types http.server.dispatchers kernel ;
 IN: blog
+
+TUPLE: blog < dispatcher ;
 
 TUPLE: post id title content created-at ;
 
