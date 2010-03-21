@@ -1,6 +1,7 @@
 ! Copyright (C) 2010 Maximilian Lupke.
 ! See http://factorcode.org/license.txt for BSD license.
-USING: accessors db.tuples db.types http.server.dispatchers kernel ;
+USING: accessors db.tuples db.types furnace.actions html.forms
+http.server.dispatchers kernel ;
 IN: blog
 
 TUPLE: blog < dispatcher ;
@@ -25,3 +26,8 @@ TUPLE: post id title content created-at ;
         swap >>limit
         "created_at desc" >>order
     select-tuples ;
+
+: <recent-posts-action> ( -- action )
+    <page-action>
+        [ 5 recent-posts "posts" set-value ] >>init
+        { blog "recent-posts" } >>template ;
