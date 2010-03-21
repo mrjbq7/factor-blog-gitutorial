@@ -1,0 +1,13 @@
+<?xml version='1.0' ?>
+
+<t:chloe xmlns:t="http://factorcode.org/chloe/1.0">
+  <t:title>New Post</t:title>
+
+  <t:validation-errors />
+
+  <t:form t:action="$blog/new-post" class="post-form">
+    <p>Title: <t:field t:name="title" t:size="100" /></p>
+    <p><t:textarea t:name="content" /></p>
+    <input type="submit" value="Create Post" />
+  </t:form>
+</t:chloe>
