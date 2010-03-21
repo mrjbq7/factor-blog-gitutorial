@@ -17,3 +17,9 @@ TUPLE: post id title content created-at ;
 
 : post ( id -- post )
     <post> select-tuple ;
+
+: recent-posts ( num -- posts )
+    f <post> >query
+        swap >>limit
+        "created_at desc" >>order
+    select-tuples ;
