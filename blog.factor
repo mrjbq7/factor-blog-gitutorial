@@ -1,7 +1,7 @@
 ! Copyright (C) 2010 Maximilian Lupke.
 ! See http://factorcode.org/license.txt for BSD license.
 USING: accessors db.tuples db.types furnace.actions html.forms
-http.server.dispatchers kernel ;
+http.server.dispatchers kernel validators ;
 IN: blog
 
 TUPLE: blog < dispatcher ;
@@ -31,3 +31,9 @@ TUPLE: post id title content created-at ;
     <page-action>
         [ 5 recent-posts "posts" set-value ] >>init
         { blog "recent-posts" } >>template ;
+
+: validate-post ( -- )
+    {
+        { "title" [ v-required v-one-line 100 v-max-length ] }
+        { "content" [ v-required ] }
+    } validate-params ;
