@@ -1,8 +1,8 @@
 ! Copyright (C) 2010 Maximilian Lupke.
 ! See http://factorcode.org/license.txt for BSD license.
 USING: accessors calendar db.tuples db.types furnace.actions
-furnace.redirection html.forms http.server.dispatchers kernel present
-sequences urls validators ;
+furnace.boilerplate furnace.redirection html.forms
+http.server.dispatchers kernel present sequences urls validators ;
 IN: blog
 
 TUPLE: blog < dispatcher ;
@@ -52,3 +52,10 @@ TUPLE: post id title content created-at ;
             [ insert-tuple ] [ post-url <redirect> ] bi
         ] >>submit
         { blog "new-post" } >>template ;
+
+: <blog> ( -- dispatcher )
+    blog new-dispatcher
+        <recent-posts-action> "" add-responder
+        <new-post-action> "new-post" add-responder
+    <boilerplate>
+        { blog "layout" } >>template ;
