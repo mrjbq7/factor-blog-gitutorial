@@ -53,9 +53,19 @@ TUPLE: post id title content created-at ;
         ] >>submit
         { blog "new-post" } >>template ;
 
+: <view-post-action> ( -- action )
+    <page-action>
+        "id" >>rest
+        [
+            validate-integer-id
+            "id" value post from-object
+        ] >>init
+        { blog "view-post" } >>template ;
+
 : <blog> ( -- dispatcher )
     blog new-dispatcher
         <recent-posts-action> "" add-responder
         <new-post-action> "new-post" add-responder
+        <view-post-action> "post" add-responder
     <boilerplate>
         { blog "layout" } >>template ;
