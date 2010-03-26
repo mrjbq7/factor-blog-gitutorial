@@ -62,10 +62,28 @@ TUPLE: post id title content created-at ;
         ] >>init
         { blog "view-post" } >>template ;
 
+: <edit-post-action> ( -- action )
+    <view-post-action>
+        { blog "edit-post" } >>template ;
+
+: <submit-post-action> ( -- action )
+    <page-action>
+        [
+            validate-integer-id
+            validate-post
+        ] >>validate
+        [
+            "id" value <post> dup
+            { "title" "content" } to-object
+            [ update-tuple ] [ post-url <redirect> ] bi
+        ] >>submit ;
+
 : <blog> ( -- dispatcher )
     blog new-dispatcher
         <recent-posts-action> "" add-responder
         <new-post-action> "new-post" add-responder
+        <edit-post-action> "edit-post" add-responder
+        <submit-post-action> "submit-post" add-responder
         <view-post-action> "post" add-responder
     <boilerplate>
         { blog "layout" } >>template ;
