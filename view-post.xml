@@ -14,5 +14,6 @@
   <div class="post-footer">
     Posted on <span class="post-date"><t:label t:name="created-at" /></span>
   | <t:a t:href="$blog/edit-post" t:rest="id">Edit this post</t:a>
+  | <t:a t:href="$blog/delete-post" t:rest="id">Delete this post</t:a>
   </div>
 </t:chloe>
