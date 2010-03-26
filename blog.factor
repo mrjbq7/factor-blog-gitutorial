@@ -78,12 +78,22 @@ TUPLE: post id title content created-at ;
             [ update-tuple ] [ post-url <redirect> ] bi
         ] >>submit ;
 
+: <delete-post-action> ( -- action )
+    <action>
+        "id" >>rest
+        [
+            validate-integer-id
+            "id" value <post>
+            [ delete-tuples ] [ "$blog/" >url <redirect> ] bi
+        ] >>display ;
+
 : <blog> ( -- dispatcher )
     blog new-dispatcher
         <recent-posts-action> "" add-responder
         <new-post-action> "new-post" add-responder
         <edit-post-action> "edit-post" add-responder
         <submit-post-action> "submit-post" add-responder
+        <delete-post-action> "delete-post" add-responder
         <view-post-action> "post" add-responder
     <boilerplate>
         { blog "layout" } >>template ;
