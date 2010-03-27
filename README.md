@@ -10,7 +10,7 @@ so is hope there won't be any fatal errors.
 
 Run the respective code inside a Factor listener.
 
-1.  as of commit f3a798a9a8eb6d3e8528a629c41a55dd31f30bb7:
+1.  as of commit f3a798a9a8eb6d3e8528a629c41a55dd31f30bb7 (that means current HEAD):
         USING: blog threads ;
         [ run-blog ] in-thread
 
@@ -27,7 +27,7 @@ the changes, press F2 in the listener and run:
 
 Run this inside a Factor listener.
 
-1.  as of commit ab47b145ce7de036017b8c66ff490c693f927588:
+1.  as of commit ab47b145ce7de036017b8c66ff490c693f927588 (that means current HEAD):
         USING: blog db db.sqlite furnace.alloy ;
         "sqlite.db" <sqlite-db> [
             \ post ensure-table
