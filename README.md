@@ -6,6 +6,23 @@ This is all just some kind of transcript of my learning efforts so it
 *could* contain stupid mistakes, but I test all commits before pushing
 so is hope there won't be any fatal errors.
 
+## Starting the server
+
+Run the respective code inside a Factor listener.
+
+1.  as of commit f3a798a9a8eb6d3e8528a629c41a55dd31f30bb7:
+        USING: blog threads ;
+        [ run-blog ] in-thread
+
+2.  as of commit 3e91728fd6b2021fc11dff1dac7c5ae7ace8c479:
+        USING: blog db db.sqlite http.server namespaces threads ;
+        <blog> main-responder set-global
+        [ "sqlite.db" <sqlite-db> [ 8080 httpd ] with-db ] in-thread
+
+If you changed the blog.factor file and want the running server to load
+the changes, press F2 in the listener and run:
+    <blog> main-responder set-global
+
 ## Setting up the database
 
 Run this inside a Factor listener.
