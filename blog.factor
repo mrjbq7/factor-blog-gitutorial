@@ -95,7 +95,9 @@ TUPLE: post id title content created-at ;
         <submit-post-action> "submit-post" add-responder
         <delete-post-action> "delete-post" add-responder
         <view-post-action> "post" add-responder
+    <boilerplate>
+        { blog "page" } >>template
     "Gitutorial Blog" <login-realm>
         f >>secure
     <boilerplate>
-        { blog "layout" } >>template ;
+        { blog "boilerplate" } >>template ;
