@@ -1,7 +1,7 @@
 ! Copyright (C) 2010 Maximilian Lupke.
 ! See http://factorcode.org/license.txt for BSD license.
 USING: accessors calendar db.tuples db.types furnace.actions
-furnace.boilerplate furnace.redirection html.forms
+furnace.auth.login furnace.boilerplate furnace.redirection html.forms
 http.server.dispatchers kernel present sequences urls validators ;
 IN: blog
 
@@ -95,5 +95,7 @@ TUPLE: post id title content created-at ;
         <submit-post-action> "submit-post" add-responder
         <delete-post-action> "delete-post" add-responder
         <view-post-action> "post" add-responder
+    "Gitutorial Blog" <login-realm>
+        f >>secure
     <boilerplate>
         { blog "layout" } >>template ;
