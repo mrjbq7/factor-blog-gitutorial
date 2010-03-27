@@ -1,10 +1,10 @@
 ! Copyright (C) 2010 Maximilian Lupke.
 ! See http://factorcode.org/license.txt for BSD license.
 USING: accessors calendar db.sqlite db.tuples db.types furnace.actions
-furnace.alloy furnace.auth.login furnace.boilerplate
-furnace.redirection furnace.sessions html.forms http.server
-http.server.dispatchers kernel namespaces present sequences urls
-validators ;
+furnace.alloy furnace.auth.features.registration furnace.auth.login
+furnace.boilerplate furnace.redirection furnace.sessions html.forms
+http.server http.server.dispatchers kernel namespaces present
+sequences urls validators ;
 IN: blog
 
 TUPLE: blog < dispatcher ;
@@ -101,6 +101,7 @@ TUPLE: post id title content created-at ;
         { blog "page" } >>template
     "Gitutorial Blog" <login-realm>
         f >>secure
+        allow-registration
     <boilerplate>
         { blog "boilerplate" } >>template ;
 
