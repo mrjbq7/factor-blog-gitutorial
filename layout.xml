@@ -12,7 +12,6 @@
 
 <body>
   <h1><t:write-title /></h1>
-  <t:a t:href="$blog/new-post">New Post</t:a>
   <t:call-next-template />
 </body>
 

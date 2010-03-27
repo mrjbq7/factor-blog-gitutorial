@@ -3,6 +3,8 @@
 <t:chloe xmlns:t="http://factorcode.org/chloe/1.0">
   <t:title>Recent Posts</t:title>
 
+  <t:a t:href="$blog/new-post">New Post</t:a>
+
   <t:bind-each t:name="posts">
     <h2 class="post-title">
       <t:a t:href="$blog/post" t:rest="id">
