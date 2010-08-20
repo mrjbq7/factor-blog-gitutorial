@@ -29,7 +29,7 @@ Run this inside a Factor listener.
 
 1.  as of commit ab47b145ce7de036017b8c66ff490c693f927588 (that means current HEAD):
         USING: blog db db.sqlite furnace.alloy ;
-        "sqlite.db" <sqlite-db> [
+        "resource:blog.db" <sqlite-db> [
             \ post ensure-table
             init-furnace-tables
         ] with-db
@@ -37,3 +37,4 @@ Run this inside a Factor listener.
 2.  as of commit 0e528d64dfe82f5be3da16ccd2f8a094d20f277c:
         USING: blog db db.sqlite ;
         "sqlite.db" <sqlite-db> [ \ post ensure-table ] with-db
+

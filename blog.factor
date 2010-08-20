@@ -85,8 +85,8 @@ TUPLE: post id title content created-at ;
         "id" >>rest
         [
             validate-integer-id
-            "id" value <post>
-            [ delete-tuples ] [ "$blog/" >url <redirect> ] bi
+            "id" value <post> delete-tuples
+            "$blog/" >url <redirect>
         ] >>display ;
 
 : <blog> ( -- dispatcher )
@@ -107,6 +107,9 @@ TUPLE: post id title content created-at ;
 
 : run-blog ( -- )
     <blog>
-    "blog.db" <sqlite-db> <alloy>
+    "resource:blog.db" <sqlite-db> <alloy>
     main-responder set-global
     8080 httpd ;
+
+MAIN: run-blog
+
